@@ -7,21 +7,13 @@ import java.util.stream.Collectors;
 
 /**
  * @author Lazarchuk Aleksandr
- * @version 1.0
- * @date 05/07/2015
- * {@link https://bitbucket.org/OpsIT/luhn-validation/commits/49927398716}
- * ***********************************************************************
+ * @version 1.1
+ * *******************
  * The Luhn Algorithm:
  */
 public class Luhn2 implements ILuhn2 {
 
     @Override
-    public boolean checkLuhnAlgorithm(String card_number) throws IllegalArgumentException, IllegalStateException {
-        List<String>  strListDigit = new ArrayList<>(Arrays.asList(card_number.split("")));
-        List<Integer> intListDigit = strListDigit.stream().map(Integer::valueOf).collect(Collectors.toList());
-        return (calculateLuhn(doubleEvenDigits(intListDigit)) % 10) == 0 ? false : true;
-    }
-
     public List<Integer> doubleEvenDigits(List<Integer> numbers) {
         for (int number = (numbers.size() - 1); 0 <= number; number-=2){
             if (9 < (numbers.get(number)*2)) {
@@ -34,8 +26,16 @@ public class Luhn2 implements ILuhn2 {
         return numbers;
     }
 
+    @Override
     public Integer calculateLuhn(List<Integer> numbers) {
         return numbers.stream().mapToInt(number -> number++).sum();
+    }
+
+    @Override
+    public boolean checkLuhnAlgorithm(String card_number) throws IllegalArgumentException, IllegalStateException {
+        List<String>  strListDigit = new ArrayList<>(Arrays.asList(card_number.split("")));
+        List<Integer> intListDigit = strListDigit.stream().map(Integer::valueOf).collect(Collectors.toList());
+        return (calculateLuhn(doubleEvenDigits(intListDigit)) % 10) == 0 ? false : true;
     }
 
 

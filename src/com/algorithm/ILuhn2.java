@@ -1,15 +1,35 @@
 package com.algorithm;
 
+import java.util.List;
+
 /**
- * Created by Саша on 05.07.2015.
+ * @author Lazarchuk Aleksandr
+ * @date 30/06/2015
+ * {@link https://bitbucket.org/OpsIT/luhn-validation/commits/49927398716}
+ * *****************************
+ * The interface Luhn Algorithm:
  */
+
 public interface ILuhn2 {
 
     /**
-     * Convert number to the list;
-     * 1. Double every second digit, from the rightmost digit: (12) = 2, (82) = 16, (32) = 6, (22) = 4, (9*2) = 18;
-     * 2. Sum all digits (digits in parentheses are the products from Step 1): 6 + (2) + 7 + (1 + 6) + 9 + (6) + 7 + (4) + 9 + (1 + 8) + 4 = 70;
-     * 3. Take the sum modulo 10: 70 mod 10 = 0; the account number is valid;
+     * (Behavior #1) Double every second digit, from the rightmost digit
+     *
+     * @param numbers
+     * @return
+     */
+    public List<Integer> doubleEvenDigits(List<Integer> numbers);
+
+    /**
+     * (Behavior #2) If in the process of doubling the value is greater than 9, add the two digits of the result
+     *
+     * @param numbers
+     * @return
+     */
+    public Integer calculateLuhn(List<Integer> numbers);
+
+    /**
+     * (Behavior #3) Sum all digits
      *
      * @param card_number
      * @return
