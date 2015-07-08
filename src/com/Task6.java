@@ -27,8 +27,11 @@ public class Task6 {
 
         String PATTERN_CLOCK_12 = "^[0-9]+:[0-9]+:[0-9]+ [A-Za-z]+$";
 
-        Pattern patternClock12 = Pattern.compile(PATTERN_CLOCK_12);
-        if( patternClock12.matcher(line).matches() ){
+//        Pattern patternClock12 = Pattern.compile(PATTERN_CLOCK_12);
+//        Matcher matcherClock12 = patternClock12.matcher(line);
+//        matcherClock12.matches()
+
+        if( Pattern.compile(PATTERN_CLOCK_12).matcher(line).matches() ){
             /* ... */
         }
     }
