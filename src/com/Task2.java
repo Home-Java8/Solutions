@@ -6,15 +6,21 @@ package com;
 public class Task2 {
 
     public static void main(String[] args) {
-        System.out.print( func(5, 3));
+        System.out.println( func(5, 3));
+
+        System.out.println( func2(5, 3));
     }
 
 
     public static int func(int a, int n){
         if(n > 1)
             return (a * func(a, (n-1)));
-        else
-            return a;
+        return a;
+    }
+
+
+    public static int func2(int a, int n){
+        return n > 1 ? (a * func2(a,(n-1))) : a;
     }
 
 }

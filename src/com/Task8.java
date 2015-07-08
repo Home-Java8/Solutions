@@ -48,23 +48,25 @@ public class Task8 {
         int kernels = 8;
 //        for (int kernel = 1; kernel <= kernels; kernel++)
 //            System.out.print( kernelSort(8, kernel, users) );
-        System.out.print( multySort(kernels, users) );
+        System.out.print( multySort(kernels, users, new StringBuffer()) );
     }
 
-    static StringBuffer kernelSort(int kernels, int kernel, List<User> users){
-        StringBuffer sb = new StringBuffer();
-        int limitUser = users.size() / kernels;
-        for (int i = kernel; i <= (users.size() - kernels + kernel); i+=kernels) {
-            if (users.get(i).isValid())
-                sb.append(users.get(i).getLogin() + '\n');
-        }
+
+
+    // идея такая что я создаю-вызываю количество функций согласно N-ядрам
+    static StringBuffer multySort(int kernels, List<User> users, StringBuffer sb){
+//        StringBuffer sb = new StringBuffer();
+        for (int kernel = 1; kernel <= kernels; kernel++)
+            sb.append(kernelSort(kernels, kernel, users, new StringBuffer()));
         return sb;
     }
 
-    static StringBuffer multySort(int kernels, List<User> users){
-        StringBuffer sb = new StringBuffer();
-        for (int kernel = 1; kernel <= kernels; kernel++)
-            sb.append(kernelSort(8, kernel, users));
+    // идея в том что я начинаю с какого-то N-элемента (по номеру ядра) и с шагом количества всех ядер прохожу этот цыкл
+    static StringBuffer kernelSort(int kernels, int kernel, List<User> users, StringBuffer sb){
+//        StringBuffer sb = new StringBuffer();
+        for (int i = kernel; i <= (users.size()-kernels+kernel); i+=kernels)
+            if (users.get(i).isValid())
+                sb.append(users.get(i).getLogin() + '\n');
         return sb;
     }
 

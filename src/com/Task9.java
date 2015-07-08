@@ -25,11 +25,13 @@ public class Task9 {
     public static void main(String[] args) {
         List<String> mList = Arrays.asList("aa1", "cc2", "cc1", "aa2", "bb1");
 
-        mList.stream()
-             .filter(s -> s.startsWith("a"))
-             .map(String::toUpperCase)
-             .sorted()
-             .forEach(System.out::println);
+        mList.parallelStream()
+//                .stream()
+//                .parallel()
+                .filter(s -> s.startsWith("a"))
+                .map(String::toUpperCase)
+                .sorted()
+                .forEach(System.out::println);
 
         //Результат выполнения:
         // AA1
@@ -37,7 +39,8 @@ public class Task9 {
 
 
         Arrays.asList("сс1", "сс2", "сс3")
-                .stream()
+                .parallelStream()
+//                .stream()
                 .findFirst()
                 .ifPresent(System.out::println);
         //Результат выполнения: сс1

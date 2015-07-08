@@ -38,8 +38,8 @@ public class Task7 {
 
 
 //        Comparator comparator = new UserByName();
-        Comparator comparator = new UserByValid();
-        Collections.sort(users, comparator); //Collections.sort(users, new UserByName());
+//        Comparator comparator = new UserByValid();
+        Collections.sort(users, new UserByValid()); //Collections.sort(users, comparator); //Collections.sort(users, new UserByName());
 
 
         StringBuffer sb = new StringBuffer();
