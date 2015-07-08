@@ -20,7 +20,7 @@ public class Task2 {
 
 
     public static int func2(int a, int n){
-        return n > 1 ? (a * func2(a,(n-1))) : a;
+        return n > 1 ? a * func2(a,(n-1)) : a;
     }
 
 }
