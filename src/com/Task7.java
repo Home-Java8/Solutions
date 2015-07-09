@@ -11,7 +11,7 @@ import java.util.List;
 public class Task7 {
 
     public static void main(String[] args) {
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
         users.add(new User("Alex", true));
         users.add(new User("Vlad", true));
         users.add(new User("Vitalik", false));
