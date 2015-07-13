@@ -56,25 +56,25 @@ public class MyHashMap {
 
 
     public static <K, V>Map<K, V> sampleFromMap(Map<? extends K, ? extends V> source, int n, Random rnd) {
-        List<K> chosenKeys = new ArrayList<K>();
+        List<K> chosenKeys = new ArrayList<>();
         int count = 0;
         for (K k: source.keySet()) {
             if (count++ < n) {
                 chosenKeys.add(k);
-                if (count == n) {
+                if (count == n)
                     Collections.shuffle(chosenKeys, rnd);
-                }
             } else {
                 int pos = rnd.nextInt(count);
-                if (pos < n) {
+                if (pos < n)
                     chosenKeys.set(pos, k);
-                }
             }
         }
-        Map<K, V> result = new HashMap<K, V>();
+
+        Map<K, V> result = new HashMap<>();
         for (K k: chosenKeys) {
             result.put(k, source.get(k));
         }
+
         return Collections.unmodifiableMap(result);
     }
 
